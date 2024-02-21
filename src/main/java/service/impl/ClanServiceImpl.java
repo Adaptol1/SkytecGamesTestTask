@@ -6,7 +6,7 @@ import service.ClanService;
 public class ClanServiceImpl implements ClanService
 {
     @Override
-    public Clan get (long clanId)
+    public Clan getClan (long clanId)
     {
         Clan clan = new Clan();
         return clan;
