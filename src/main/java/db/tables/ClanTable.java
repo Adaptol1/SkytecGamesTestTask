@@ -2,8 +2,6 @@ package db.tables;
 
 import db.DB;
 import dto.Clan;
-
-import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.concurrent.atomic.AtomicInteger;
@@ -70,5 +68,25 @@ public class ClanTable extends AbstractTable
             e.printStackTrace();
         }
         return null;
+    }
+
+    public void update(long id, String name, int gold)
+    {
+        String sql  = "UPDATE " + name
+                    + " SET name = ?, gold = ?"
+                    + " WHERE id = ?";
+
+        try (var conn  = DB.connect();
+             var pstmt = conn.prepareStatement(sql))
+        {
+            pstmt.setString(1, name);
+            pstmt.setInt(2, gold);
+            pstmt.setLong(3, id);
+            pstmt.executeUpdate();
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
     }
 }

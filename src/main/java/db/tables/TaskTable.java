@@ -1,7 +1,6 @@
 package db.tables;
 
 import db.DB;
-import dto.Clan;
 import dto.Task;
 
 import java.sql.SQLException;

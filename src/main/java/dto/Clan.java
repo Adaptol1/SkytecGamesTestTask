@@ -1,14 +1,16 @@
 package dto;
 
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.Setter;
 
-import java.io.Serial;
 import java.util.concurrent.atomic.AtomicInteger;
 
 
+
+@AllArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
 public class Clan
 {
     private long id;

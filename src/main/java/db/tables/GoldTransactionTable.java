@@ -1,13 +1,11 @@
 package db.tables;
 
 import db.DB;
-import dto.Clan;
 import dto.GoldSource;
 import dto.GoldTransaction;
 
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.concurrent.atomic.AtomicInteger;
 
 public class GoldTransactionTable extends AbstractTable
 {
@@ -38,7 +36,7 @@ public class GoldTransactionTable extends AbstractTable
             pstmt.setString(2, transaction.getGoldSource().getSource());
             pstmt.setLong(3, transaction.getSourceId());
             pstmt.setInt(4, transaction.getTransferredGold());
-            pstmt.setInt(5, transaction.getTotalGold().get());
+            pstmt.setInt(5, transaction.getTotalGold());
 
             int insertedRow = pstmt.executeUpdate();
             if (insertedRow > 0) {
@@ -81,7 +79,7 @@ public class GoldTransactionTable extends AbstractTable
                         goldSource,
                         rs.getLong("source_id"),
                         rs.getInt("transferred_gold"),
-                        new AtomicInteger(rs.getInt("total_gold"))
+                        rs.getInt("total_gold")
                 );
             }
         }

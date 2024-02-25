@@ -1,6 +1,9 @@
 package service;
 
+import dto.User;
+
 public interface UserDonateService
 {
-    void donateGoldToClan (long clanId, long userId, int gold);
+    User get (long userId);
+    void donateGoldToClan (long clanId, User user, int gold);
 }

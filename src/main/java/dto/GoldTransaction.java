@@ -4,8 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.util.concurrent.atomic.AtomicInteger;
-
 @Getter
 @Setter
 @AllArgsConstructor
@@ -21,13 +19,13 @@ public class GoldTransaction
 
     private int transferredGold;
 
-    private AtomicInteger totalGold;
+    private int totalGold;
 
 
 
     public GoldTransaction(long clanId, GoldSource goldSource,
                            long sourceId, int transferredGold,
-                           AtomicInteger totalGold)
+                           int totalGold)
     {
         this.clanId = clanId;
         this.goldSource = goldSource;

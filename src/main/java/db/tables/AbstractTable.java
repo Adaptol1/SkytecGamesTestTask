@@ -2,7 +2,6 @@ package db.tables;
 
 import db.DB;
 import db.DatabaseConfig;
-
 import java.io.*;
 import java.sql.Connection;
 import java.sql.SQLException;

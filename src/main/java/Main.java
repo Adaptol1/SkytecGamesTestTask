@@ -13,7 +13,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        GoldTransaction transaction = new GoldTransaction(123, GoldSource.USER_DONATE, 321, 24, new AtomicInteger(24));
+        GoldTransaction transaction = new GoldTransaction(123, GoldSource.USER_DONATE, 321, 24, 24);
         GoldTransactionTable table = new GoldTransactionTable();
         table.create();
         table.add(transaction);
