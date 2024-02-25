@@ -1,5 +1,5 @@
 CREATE TABLE IF NOT EXISTS tasks
 (
-    id           BIGINT       PRIMARY KEY,
+    id           SERIAL      PRIMARY KEY,
     gold         INTEGER         NOT NULL
 );

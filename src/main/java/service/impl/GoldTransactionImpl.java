@@ -1,6 +1,6 @@
 package service.impl;
 
-import service.GoldSource;
+import dto.GoldSource;
 import service.GoldTransactionService;
 
 public class GoldTransactionImpl implements GoldTransactionService
