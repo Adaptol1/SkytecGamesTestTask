@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+@AllArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
 public class Task
 {
     private long id;
@@ -16,4 +16,5 @@ public class Task
     {
         this.gold = gold;
     }
+
 }

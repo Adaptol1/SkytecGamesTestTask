@@ -1,16 +1,9 @@
 package dto;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
-
 import java.util.concurrent.atomic.AtomicInteger;
 
-
-
 @AllArgsConstructor
-@Getter
-@Setter
 public class Clan
 {
     private long id;
@@ -20,6 +13,30 @@ public class Clan
     public Clan(String name, AtomicInteger gold)
     {
         this.name = name;
+        this.gold = gold;
+    }
+
+    public long getId() {
+        return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public synchronized AtomicInteger getGold() {
+        return gold;
+    }
+
+    public synchronized void setGold(AtomicInteger gold) {
         this.gold = gold;
     }
 }

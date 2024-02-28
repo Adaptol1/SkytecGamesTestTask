@@ -6,7 +6,7 @@ import service.GoldTransactionService;
 
 public class GoldTransactionServiceImpl implements GoldTransactionService
 {
-    private GoldTransactionTable transactionTable;
+    private GoldTransactionTable transactionTable = new GoldTransactionTable();
     @Override
     public void registerGoldTransaction (GoldTransaction transaction)
     {

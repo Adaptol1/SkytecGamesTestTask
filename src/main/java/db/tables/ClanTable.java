@@ -70,9 +70,9 @@ public class ClanTable extends AbstractTable
         return null;
     }
 
-    public void update(long id, String name, int gold)
+    public void update(long id, String name, AtomicInteger gold)
     {
-        String sql  = "UPDATE " + name
+        String sql  = "UPDATE " + this.name
                     + " SET name = ?, gold = ?"
                     + " WHERE id = ?";
 
@@ -80,7 +80,7 @@ public class ClanTable extends AbstractTable
              var pstmt = conn.prepareStatement(sql))
         {
             pstmt.setString(1, name);
-            pstmt.setInt(2, gold);
+            pstmt.setInt(2, gold.intValue());
             pstmt.setLong(3, id);
             pstmt.executeUpdate();
         }

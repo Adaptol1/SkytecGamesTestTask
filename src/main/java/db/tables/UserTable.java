@@ -2,9 +2,10 @@ package db.tables;
 
 import db.DB;
 import dto.User;
-
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class UserTable extends AbstractTable
 {
@@ -63,5 +64,29 @@ public class UserTable extends AbstractTable
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<User> findAll()
+    {
+        var users = new ArrayList<User>();
+
+        var sql = "SELECT id, clan_id FROM " + name + " ORDER BY id";
+
+        try (var conn =  DB.connect();
+             var stmt = conn.createStatement()) {
+
+            var rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                var user = new User(
+                        rs.getLong("id"),
+                        rs.getLong("clan_id")
+                );
+                users.add(user);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return users;
     }
 }

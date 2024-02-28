@@ -2,9 +2,10 @@ package db.tables;
 
 import db.DB;
 import dto.Task;
-
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 
 public class TaskTable extends AbstractTable
 {
@@ -63,5 +64,29 @@ public class TaskTable extends AbstractTable
             e.printStackTrace();
         }
         return null;
+    }
+
+    public List<Task> findAll()
+    {
+        var tasks = new ArrayList<Task>();
+
+        var sql = "SELECT id, gold FROM " + name + " ORDER BY id";
+
+        try (var conn =  DB.connect();
+             var stmt = conn.createStatement()) {
+
+            var rs = stmt.executeQuery(sql);
+
+            while (rs.next()) {
+                var task = new Task(
+                        rs.getLong("id"),
+                        rs.getInt("gold")
+                        );
+                tasks.add(task);
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return tasks;
     }
 }

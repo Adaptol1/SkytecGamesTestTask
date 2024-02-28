@@ -3,14 +3,12 @@ package service.impl;
 import db.tables.TaskTable;
 import dto.GoldSource;
 import dto.Task;
-import service.ClanService;
 import service.TaskService;
 
 public class TaskServiceImpl implements TaskService
 {
-    private TaskTable taskTable;
+    private TaskTable taskTable = new TaskTable();
 
-    private ClanService clanService;
     @Override
     public Task get(long taskId)
     {
@@ -19,11 +17,13 @@ public class TaskServiceImpl implements TaskService
     @Override
     public void completeTask (long clanId, Task task, boolean success)
     {
+        ClanServiceImpl clanService = ClanServiceImpl.getInstance();
         if (success)
         {
             clanService.changeGoldCount(clanId, GoldSource.COMPLETE_TASK, task.getId(), task.getGold());
             return;
         }
-        clanService.changeGoldCount(clanId, GoldSource.COMPLETE_TASK, task.getId(), (- task.getGold() / 2));
+        else
+            clanService.changeGoldCount(clanId, GoldSource.COMPLETE_TASK, task.getId(), (- task.getGold() / 2));
     }
 }

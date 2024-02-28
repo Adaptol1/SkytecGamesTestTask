@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
 
+@AllArgsConstructor
 @Getter
 @Setter
-@AllArgsConstructor
 public class GoldTransaction
 {
     private long id;
@@ -21,8 +21,6 @@ public class GoldTransaction
 
     private int totalGold;
 
-
-
     public GoldTransaction(long clanId, GoldSource goldSource,
                            long sourceId, int transferredGold,
                            int totalGold)
@@ -33,4 +31,5 @@ public class GoldTransaction
         this.transferredGold = transferredGold;
         this.totalGold = totalGold;
     }
+
 }
